@@ -9,7 +9,7 @@ public class Smartphone extends Product {
         super();
     }
 
-    public Smartphone(int id, String name, int price, String author) {
+    public Smartphone(int id, String name, int price, String maker) {
         super(id, name, price);
         this.maker = maker;
     }
