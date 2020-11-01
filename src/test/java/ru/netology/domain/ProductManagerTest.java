@@ -6,7 +6,7 @@ import ru.netology.manager.ProductManager;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ProductManagerTest {
-    ProductManager manager = new ProductManager();
+    private ProductManager manager = new ProductManager();
     private Product first = new Book(1,"книга1",300, "Пушкин");
     private Product second = new Book(2,"книга2",400, "Бунин");
     private Product third = new Smartphone(3,"смартфон1",5000, "Nokia");

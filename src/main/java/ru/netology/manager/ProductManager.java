@@ -5,13 +5,22 @@ import ru.netology.domain.Product;
 import ru.netology.domain.Smartphone;
 import ru.netology.repository.ProductRepository;
 
-public class ProductManager {
-    private Product[] items;
 
+public class ProductManager {
+    private ProductRepository repository;
+
+    public ProductManager(ProductRepository repository) {
+        this.repository = repository;
+    }
+
+
+    public void add(Product item) {
+        repository.save(item);
+    }
     public Product[] searchBy(String text) {
         Product[] result = new Product[0];
-        ProductRepository productRepository = new ProductRepository();
-        for (Product product: productRepository.findAll()) {
+
+        for (Product product: repository.findAll()) {
             if (matches(product, text)) {
                 Product[] tmp = new Product[result.length + 1];
                 // используйте System.arraycopy, чтобы скопировать всё из result в tmp
@@ -39,15 +48,5 @@ public class ProductManager {
             return false;
         }
         return false;
-    }
-
-    public void add(Product item) {
-        int length = items.length + 1;
-        Product[] tmp = new Product[length];
-        System.arraycopy(items, 0, tmp, 0, items.length);
-        // кладём последним наш элемент
-        int lastIndex = tmp.length - 1;
-        tmp[lastIndex] = item;
-        items = tmp;
     }
 }
