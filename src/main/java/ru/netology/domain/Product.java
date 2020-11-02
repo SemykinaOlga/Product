@@ -63,4 +63,11 @@ public class Product {
                 ", price=" + price +
                 '}';
     }
+
+    public boolean matches(Product product, String search) {
+        if (product.getName().equalsIgnoreCase(search)) {
+            return true;
+        }
+        return  false;
+    }
 }
