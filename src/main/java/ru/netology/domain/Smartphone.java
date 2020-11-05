@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class Smartphone extends Product {
     private String maker;
+    private Smartphone smartphone;
 
     public Smartphone() {
         super();
@@ -41,5 +42,16 @@ public class Smartphone extends Product {
         return "Smartphone{" +
                 "maker='" + maker +
                 '}';
+    }
+
+    @Override
+    public boolean matches(String search) {
+        if (super.matches(search)) {
+            return  true;
+        }
+        if (getMaker().equalsIgnoreCase(search)) {
+            return true;
+        }
+        return false;
     }
 }
